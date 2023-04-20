@@ -37,6 +37,14 @@ const material = new THREE.MeshBasicMaterial({
 const box = new THREE.Mesh(boxGeometry, material);
 scene.add(box);
 
+// デバッグ
+// gui.add(box.position, 'x', -3, 3, 0.01);
+gui.add(box.position, 'x').min(-3).max(3).step(0.001).name('transformX');
+gui.add(box.position, 'y').min(-3).max(3).step(0.001).name('transformY');
+gui.add(box.position, 'z').min(-3).max(3).step(0.001).name('transformZ');
+
+gui.add(box.rotation, 'x').min(-3).max(3).step(0.001).name('rotationX');
+
 //ライト
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
 scene.add(ambientLight);
