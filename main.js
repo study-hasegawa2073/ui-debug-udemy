@@ -38,17 +38,42 @@ const box = new THREE.Mesh(boxGeometry, material);
 scene.add(box);
 
 // デバッグ
+// フォルダー
+const positionFolder = gui.addFolder('Position');
+const visibleFolder = gui.addFolder('Visible');
+const colorFolder = gui.addFolder('Color');
+
 // gui.add(box.position, 'x', -3, 3, 0.01);
-gui.add(box.position, 'x').min(-3).max(3).step(0.001).name('transformX');
-gui.add(box.position, 'y').min(-3).max(3).step(0.001).name('transformY');
-gui.add(box.position, 'z').min(-3).max(3).step(0.001).name('transformZ');
+positionFolder
+  .add(box.position, 'x')
+  .min(-3)
+  .max(3)
+  .step(0.001)
+  .name('transformX');
+positionFolder
+  .add(box.position, 'y')
+  .min(-3)
+  .max(3)
+  .step(0.001)
+  .name('transformY');
+positionFolder
+  .add(box.position, 'z')
+  .min(-3)
+  .max(3)
+  .step(0.001)
+  .name('transformZ');
 
-gui.add(box.rotation, 'x').min(-3).max(3).step(0.001).name('rotationX');
+positionFolder
+  .add(box.rotation, 'x')
+  .min(-3)
+  .max(3)
+  .step(0.001)
+  .name('rotationX');
 
-gui.add(box, 'visible').name('visible');
-gui.add(material, 'wireframe').name('wireframe');
+visibleFolder.add(box, 'visible').name('visible');
+visibleFolder.add(material, 'wireframe').name('wireframe');
 
-gui.addColor(material, 'color').name('color');
+colorFolder.addColor(material, 'color').name('color');
 
 //ライト
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
